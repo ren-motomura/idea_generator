@@ -1,6 +1,6 @@
 class Entry < ActiveRecord::Base
   def self.select_randomly(num = 1)
     ids = self.select(:id).where(is_disabled: false)
-    Array( self.where(id: ids.sample(num)) )
+    self.where(id: ids.sample(num))
   end
 end

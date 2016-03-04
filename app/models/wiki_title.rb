@@ -1,7 +1,7 @@
 class WikiTitle < ActiveRecord::Base
   def self.select_randomly(num = 1)
     @enable_ids ||= self.select(:id).where(is_disabled: false)
-    Array( self.where(id: @enable_ids.sample(num)) )
+    self.where(id: @enable_ids.sample(num))
   end
 
   def self.remove_from_enable_ids(id)
